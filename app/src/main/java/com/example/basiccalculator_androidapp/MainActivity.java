@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "";
+                backspace();
                 displayOne();
             }
         });
@@ -144,15 +144,32 @@ public class MainActivity extends AppCompatActivity {
         btnAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "";
+                clear();
                 displayOne();
+                displayTwo();
             }
         });
 
         btnDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "÷";
+
+                // Set dot_inserted = false
+                dot_inserted = false;
+
+                // Check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // Check if last digit is a dot. If so, remove it.
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // Check if operator_inserted is false. If so, append opeartor to current string
+                    if (operator_inserted == false) {
+                        curr = curr + " ÷ ";
+                        operator_inserted = true;
+                    }
+                }
+                // Call displayOne
                 displayOne();
             }
         });
@@ -160,7 +177,23 @@ public class MainActivity extends AppCompatActivity {
         btnMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "x";
+
+                // Set dot_inserted = false
+                dot_inserted = false;
+
+                // Check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // Check if last digit is a dot. If so, remove it.
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // Check if operator_inserted is false. If so, append opeartor to current string
+                    if (operator_inserted == false) {
+                        curr = curr + " x ";
+                        operator_inserted = true;
+                    }
+                }
+                // Call displayOne
                 displayOne();
             }
         });
@@ -168,7 +201,23 @@ public class MainActivity extends AppCompatActivity {
         btnSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "-";
+
+                // Set dot_inserted = false
+                dot_inserted = false;
+
+                // Check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // Check if last digit is a dot. If so, remove it.
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // Check if operator_inserted is false. If so, append opeartor to current string
+                    if (operator_inserted == false) {
+                        curr = curr + " - ";
+                        operator_inserted = true;
+                    }
+                }
+                // Call displayOne
                 displayOne();
             }
         });
@@ -176,17 +225,75 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curr = curr + "+";
+
+                // Set dot_inserted = false
+                dot_inserted = false;
+
+                // Check if curr is not empty
+                if (!curr.isEmpty()) {
+                    // Check if last digit is a dot. If so, remove it.
+                    if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                        backspace();
+                    }
+                    // Check if operator_inserted is false. If so, append opeartor to current string
+                    if (operator_inserted == false) {
+                        curr = curr + " + ";
+                        operator_inserted = true;
+                    }
+                }
+                // Call displayOne
                 displayOne();
             }
         });
 
+        btnDecimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Check if empty. If yes, append "0" and set dot_inserted variable to true
+                if (curr.isEmpty()) {
+                    curr = "0.";
+                    dot_inserted = true;
+                }
 
+                // Check if dot_inserted is false. If yes, append "."
+                if (dot_inserted == false) {
+                    curr = curr + ".";
+                    dot_inserted = true;
+                }
+                // Update display
+                displayOne();
+            }
+        });
 
+        btnEquals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                // Check that last digit is not an operator
+                if (operator_inserted == true && !curr.substring(curr.length() - 1, curr.length()).equals(" ")) {
+                    // Create a string array
+                    String[] tokens = curr.split(" ");
 
-
+                    switch (tokens[1].charAt(0)) {
+                        case '+':
+                            res = Double.toString(Double.parseDouble(tokens[0]) + Double.parseDouble(tokens[2]));
+                            break;
+                        case '-':
+                            res = Double.toString(Double.parseDouble(tokens[0]) - Double.parseDouble(tokens[2]));
+                            break;
+                        case 'x':
+                            res = Double.toString(Double.parseDouble(tokens[0]) * Double.parseDouble(tokens[2]));
+                            break;
+                        case '÷':
+                            res = Double.toString(Double.parseDouble(tokens[0]) / Double.parseDouble(tokens[2]));
+                            break;
+                    }
+                    displayTwo();
+                }
+            }
+        });
     }
+
 
     public void displayOne() {
         calculation.setText(curr);
@@ -195,6 +302,34 @@ public class MainActivity extends AppCompatActivity {
     public void displayTwo() {
         result.setText(res);
     }
+
+    public void clear() {
+        curr = "";
+        res = "";
+        dot_inserted = false;
+        operator_inserted = false;
+    }
+
+    public void backspace() {
+
+        // If curr is not empty, remove last char
+        if (!curr.isEmpty()) {
+
+            // Check if the dot is the last char in curr. If yes, set dot_inserted = false
+            if (curr.substring(curr.length() - 1, curr.length()).equals(".")) {
+                dot_inserted = false;
+            }
+
+            // If operator detected, delete three digits or characters from curr and set opeator inserted = false
+            if (curr.substring(curr.length() - 1, curr.length()).equals(" ")) {
+                curr = curr.substring(0, curr.length() - 3);
+                operator_inserted = false;
+            } else { // Otherwise, remove just last character
+                curr = curr.substring(0, curr.length() - 1);
+            }
+        }
+    }
+
 
 
 }
