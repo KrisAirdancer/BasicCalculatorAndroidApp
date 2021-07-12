@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnDel, btnAC, btnDivision, btnMultiply, btnSubtract, btnAdd, btnDecimal, btnEquals;
     private boolean dot_inserted, operator_inserted;
 
-    // Test comment - Hello! It worked!
+    
 
 
 
