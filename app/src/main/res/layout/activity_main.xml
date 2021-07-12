@@ -6,20 +6,250 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Creating the Calculation display window -->
     <EditText
         android:id="@+id/calculation"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:layout_marginTop="5dp"
+        android:gravity="end"
         android:textAlignment="textEnd"
-        android:textColor=""
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="00E4FF"
+        android:textSize="56sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Creating the Result display window -->
+    <EditText
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginTop="5dp"
+        android:gravity="end"
+        android:textAlignment="textEnd"
+        android:textColor="#00E4FF"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculation" />
+
+    <!-- Creating the Clear All button -->
+    <Button
+        android:id="@+id/btnAC"
+        android:layout_width="198dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="CLEAR"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the Delete/Backspace button -->
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_width="198dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="BACKSPACE"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@id/btnAC"
+        app:layout_constraintTop_toTopOf="@id/btnAC"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 7 button -->
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="7"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAC"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 8 button -->
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="8"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn7"
+        app:layout_constraintTop_toTopOf="@id/btn7"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 9 button -->
+    <Button
+        android:id="@+id/btn9"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="9"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn8"
+        app:layout_constraintTop_toTopOf="@id/btn8"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the Division button -->
+    <Button
+        android:id="@+id/btnDivision"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="÷"
+        android:textStyle="bold"
+        android:textSize="38sp"
+        app:layout_constraintLeft_toRightOf="@id/btn9"
+        app:layout_constraintTop_toTopOf="@id/btn9"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 4 button -->
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="4"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn7"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 5 button -->
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="5"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn4"
+        app:layout_constraintTop_toTopOf="@id/btn4"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 6 button -->
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="9"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn5"
+        app:layout_constraintTop_toTopOf="@id/btn5"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the Multiply button -->
+    <Button
+        android:id="@+id/btnMultiply"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="x"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@id/btn6"
+        app:layout_constraintTop_toTopOf="@id/btn6"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- COPY LINE -->
+
+    <!-- Creating the 1 button -->
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="1"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn4"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 2 button -->
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="5"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn4"
+        app:layout_constraintTop_toTopOf="@id/btn4"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the 6 button -->
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="9"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/btn5"
+        app:layout_constraintTop_toTopOf="@id/btn5"
+        android:layout_marginLeft="5dp"
+        />
+
+    <!-- Creating the Multiply button -->
+    <Button
+        android:id="@+id/btnMultiply"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#76EBF9"
+        android:textColor="#ffffff"
+        android:text="x"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toRightOf="@id/btn6"
+        app:layout_constraintTop_toTopOf="@id/btn6"
+        android:layout_marginLeft="5dp"
+        />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
