@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO Figure out what logic to give this button
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
